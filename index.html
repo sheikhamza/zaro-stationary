@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Zaro Stationery · Shop Manager</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: { sans: ["Plus Jakarta Sans", "ui-sans-serif", "system-ui"] },
+            colors: { navy: "#0f172a" },
+          },
+        },
+      };
+    </script>
+    <link rel="stylesheet" href="css/styles.css" />
+  </head>
+  <body class="bg-[#f4f7fb] text-slate-900">
+    <div class="app-shell min-h-screen lg:grid lg:grid-cols-[260px_1fr]">
+      <div id="sidebar-backdrop" class="hidden fixed inset-0 bg-slate-900/40 z-30 lg:hidden"></div>
+      <aside
+        id="sidebar"
+        class="fixed lg:static z-40 inset-y-0 left-0 w-[260px] bg-white border-r border-slate-100 flex flex-col -translate-x-full lg:translate-x-0 transition-transform duration-200"
+      >
+        <div class="px-5 py-5 flex items-center gap-3 border-b border-slate-100">
+          <div class="w-10 h-10 rounded-2xl bg-emerald-600 text-white flex items-center justify-center shadow-lg shadow-emerald-600/30">
+            <i data-lucide="pen-line" class="w-5 h-5"></i>
+          </div>
+          <div>
+            <p id="shop-brand" class="font-extrabold leading-tight">Zaro Stationery</p>
+            <p class="text-[11px] text-slate-400 font-medium">Shop Manager</p>
+          </div>
+        </div>
+        <nav id="sidebar-nav" class="flex-1 overflow-y-auto px-3 pb-6"></nav>
+        <div class="p-4 border-t border-slate-100 text-xs text-slate-400">
+          Local POS · FIFO costing
+        </div>
+      </aside>
+
+      <div class="min-w-0">
+        <header class="sticky top-0 z-20 bg-white/90 backdrop-blur border-b border-slate-100">
+          <div class="flex items-center justify-between gap-3 px-4 lg:px-8 h-16">
+            <div class="flex items-center gap-3">
+              <button id="menu-btn" class="lg:hidden p-2 rounded-xl hover:bg-slate-100">
+                <i data-lucide="menu" class="w-5 h-5"></i>
+              </button>
+              <div>
+                <p id="top-title" class="font-bold">Dashboard</p>
+                <p class="text-xs text-slate-400 hidden sm:block">Stationery shop operations</p>
+              </div>
+            </div>
+            <button id="quick-sale" class="btn-primary">
+              <i data-lucide="plus" class="w-4 h-4"></i>
+              <span class="hidden sm:inline">New sale</span>
+            </button>
+          </div>
+        </header>
+        <main id="view" class="p-4 lg:p-8"></main>
+      </div>
+    </div>
+
+    <div id="modal-root" class="hidden fixed inset-0 z-50 flex items-center justify-center"></div>
+    <div id="toast-root" class="fixed z-[60] bottom-4 right-4 flex flex-col gap-2 pointer-events-none"></div>
+    <div id="print-root"></div>
+
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+    <script src="js/utils.js"></script>
+    <script src="js/store.js"></script>
+    <script src="js/finance.js"></script>
+    <script src="js/demo.js"></script>
+    <script src="js/ui.js"></script>
+    <script src="js/pages/dashboard.js"></script>
+    <script src="js/pages/products.js"></script>
+    <script src="js/pages/purchases.js"></script>
+    <script src="js/pages/pos.js"></script>
+    <script src="js/pages/sales.js"></script>
+    <script src="js/pages/expenses.js"></script>
+    <script src="js/pages/customers.js"></script>
+    <script src="js/pages/inventory.js"></script>
+    <script src="js/pages/reports.js"></script>
+    <script src="js/pages/settings.js"></script>
+    <script src="js/app.js"></script>
+  </body>
+</html>
